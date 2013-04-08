@@ -1,3 +1,4 @@
+.PHONY: native native-clean
 program: native
 	dmcs -t:library -out:Libraries.Clips.dll *.cs
 
