@@ -1,3 +1,5 @@
 *.o
 libclips.so
 *.swp
+*.exe
+*.dll
