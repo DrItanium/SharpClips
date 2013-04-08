@@ -40,7 +40,7 @@ namespace Libraries.Clips
         return result;
     }
     [DllImport("libclips.so")]
-      private static extern IntPtr EnvBuild(IntPtr envPointer,
+      private static extern int EnvBuild(IntPtr envPointer,
           [MarshalAs(UnmanagedType.LPStr)]
           string statement);
     private IntPtr environmentPointer;
