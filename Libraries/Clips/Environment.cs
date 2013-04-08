@@ -43,6 +43,21 @@ namespace Libraries.Clips
       private static extern int EnvBuild(IntPtr envPointer,
           [MarshalAs(UnmanagedType.LPStr)]
           string statement);
+    [DllImport("libclips.so")]
+      private static extern void EnvClear(IntPtr theEnv);
+    [DllImport("libclips.so")]
+      private static extern void EnvReset(IntPtr theEnv);
+    [DllImport("libclips.so")]
+      private static extern long EnvRun(IntPtr theEnv, long ruleCount);
+    [DllImport("libclips.so")]
+      private static extern int EnvBatchStar(IntPtr theEnv,
+          [MarshalAs(UnmanagedType.LPStr)]
+          string filename);
+    [DllImport("libclips.so")]
+      private static extern int EnvLoad(IntPtr theEnv,
+          [MarshalAs(UnmanagedType.LPStr)]
+          string filename);
+
     private IntPtr environmentPointer;
     public ClipsEnvironment()
     {
@@ -73,5 +88,30 @@ namespace Libraries.Clips
     {
       return EnvBuild(environmentPointer, statement) != 0;
     }
+    public long Run(long count)
+    {
+      return EnvRun(environmentPointer, count);
+    }
+    public long Run() 
+    {
+      return Run(-1L);
+    }
+    public void Clear()
+    {
+      EnvClear(environmentPointer);
+    }
+    public void Reset()
+    {
+      EnvReset(environmentPointer);
+    }
+    public bool BatchStar(string fileName)
+    {
+      return EnvBatchStar(environmentPointer, fileName) != 0;
+    }
+    public bool Load(string fileName)
+    {
+      return EnvBatchStar(environmentPointer, fileName) != 0;
+    }
+
   }
 }
