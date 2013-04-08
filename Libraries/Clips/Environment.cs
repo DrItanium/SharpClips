@@ -25,9 +25,20 @@ namespace Libraries.Clips
           [MarshalAs(UnmanagedType.LPStr)]
           string instance);
     [DllImport("libclips.so")]
-      private static extern IntPtr EnvEval(IntPtr envPointer,
+      private static extern int EnvEval(IntPtr envPointer,
           [MarshalAs(UnmanagedType.LPStr)]
-          string statement);
+          string statement, 
+          IntPtr dataObjectPtr);
+    private static int EnvEval(IntPtr envPointer, string statement, DataObject dObject)
+    {
+        int size = Marshal.SizeOf(typeof(DATA_OBJECT));
+        IntPtr ptr = Marshal.AllocHGlobal(size);
+        Marshal.StructureToPtr(dObject.NativeReference, ptr, false);
+        int result = EnvEval(envPointer, statement, ptr);
+        Marshal.FreeHGlobal(ptr);
+        ptr = IntPtr.Zero;
+        return result;
+    }
     [DllImport("libclips.so")]
       private static extern IntPtr EnvBuild(IntPtr envPointer,
           [MarshalAs(UnmanagedType.LPStr)]
@@ -49,13 +60,18 @@ namespace Libraries.Clips
     {
       EnvMakeInstance(environmentPointer, instance);
     }
-    public void Eval(string statement)
+    public bool Eval(string statement)
     {
-      EnvEval(environmentPointer, statement);
+      DataObject tmp = new DataObject();
+      return Eval(statement, tmp);
     }
-    public void Build(string statement)
+    public bool Eval(string statement, DataObject dObject)
     {
-      EnvBuild(environmentPointer, statement);
+      return EnvEval(environmentPointer, statement, dObject) != 0;
+    }
+    public bool Build(string statement)
+    {
+      return EnvBuild(environmentPointer, statement) != 0;
     }
   }
 }
