@@ -130,6 +130,6 @@ Constant INTEGER_OR_FLOAT              180
 Constant SYMBOL_OR_STRING              181
 Constant INSTANCE_OR_INSTANCE_NAME     182
 Macro GetpType (target)        "((target)->type)"
-Macro SetpType (target val)    "((target)->type = (unsigned short) (val))"
+Macro SetpType (target,val)    "((target)->type = (unsigned short) (val))"
 Macro GetpValue (target)       "((target)->value)"
-Macro SetpValue (target val)   "((target)->value = (void *) (val))"
+Macro SetpValue (target,val)   "((target)->value = (void *) (val))"
