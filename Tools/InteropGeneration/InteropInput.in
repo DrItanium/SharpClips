@@ -1,0 +1,131 @@
+Macro GetpDOLength (target)      "(((target)->end - (target)->begin) + 1)"
+Macro GetpDOBegin (target)       "((target)->begin + 1)"
+Macro GetpDOEnd (target)         "((target)->end + 1)"
+Macro SetpDOBegin (target,val)   "((target)->begin = (long) ((val) - 1))"
+Macro SetpDOEnd (target,val)     "((target)->end = (long) ((val) - 1))"
+Macro DOPToString (target) "(((struct symbolHashNode *) ((target)->value))->contents)"
+Macro DOPToDouble (target) "(((struct floatHashNode *) ((target)->value))->contents)"
+Macro DOPToFloat (target) "((float) (((struct floatHashNode *) ((target)->value))->contents))"
+Macro DOPToLong (target) "(((struct integerHashNode *) ((target)->value))->contents)"
+Macro DOPToInteger (target) "((int) (((struct integerHashNode *) ((target)->value))->contents))"
+Macro DOPToPointer (target)       "((target)->value)"
+Macro DOPToExternalAddress (target) "(((struct externalAddressHashNode *) ((target)->value))->externalAddress)"
+Constant EXACTLY       0
+Constant AT_LEAST      1
+Constant NO_MORE_THAN  2
+Constant RANGE         3
+Constant OFF           0
+Constant ON            1
+Constant LHS           0
+Constant RHS           1
+Constant NESTED_RHS    2
+Constant NEGATIVE      0
+Constant POSITIVE      1
+Constant INSIDE        0
+Constant OUTSIDE       1
+Constant LESS_THAN     0
+Constant GREATER_THAN  1
+Constant EQUAL         2
+Constant GLOBAL_SAVE   0
+Constant LOCAL_SAVE    1
+Constant VISIBLE_SAVE  2
+Constant NO_DEFAULT      0
+Constant STATIC_DEFAULT  1
+Constant DYNAMIC_DEFAULT 2
+Constant OBJECT_TYPE_NAME               "OBJECT"
+Constant USER_TYPE_NAME                 "USER"
+Constant PRIMITIVE_TYPE_NAME            "PRIMITIVE"
+Constant NUMBER_TYPE_NAME               "NUMBER"
+Constant INTEGER_TYPE_NAME              "INTEGER"
+Constant FLOAT_TYPE_NAME                "FLOAT"
+Constant SYMBOL_TYPE_NAME               "SYMBOL"
+Constant STRING_TYPE_NAME               "STRING"
+Constant MULTIFIELD_TYPE_NAME           "MULTIFIELD"
+Constant LEXEME_TYPE_NAME               "LEXEME"
+Constant ADDRESS_TYPE_NAME              "ADDRESS"
+Constant EXTERNAL_ADDRESS_TYPE_NAME     "EXTERNAL-ADDRESS"
+Constant FACT_ADDRESS_TYPE_NAME         "FACT-ADDRESS"
+Constant INSTANCE_TYPE_NAME             "INSTANCE"
+Constant INSTANCE_NAME_TYPE_NAME        "INSTANCE-NAME"
+Constant INSTANCE_ADDRESS_TYPE_NAME     "INSTANCE-ADDRESS"
+Constant OBJECT_TYPE_CODE                9
+Constant PRIMITIVE_TYPE_CODE            10
+Constant NUMBER_TYPE_CODE               11
+Constant LEXEME_TYPE_CODE               12
+Constant ADDRESS_TYPE_CODE              13
+Constant INSTANCE_TYPE_CODE             14
+Constant FLOAT                           0
+Constant INTEGER                         1
+Constant SYMBOL                          2
+Constant STRING                          3
+Constant MULTIFIELD                      4
+Constant EXTERNAL_ADDRESS                5
+Constant FACT_ADDRESS                    6
+Constant INSTANCE_ADDRESS                7
+Constant INSTANCE_NAME                   8
+Constant FCALL                          30
+Constant GCALL                          31
+Constant PCALL                          32
+Constant GBL_VARIABLE                   33
+Constant MF_GBL_VARIABLE                34
+Constant SF_VARIABLE                    35
+Constant MF_VARIABLE                    36
+Constant SF_WILDCARD                    37
+Constant MF_WILDCARD                    38
+Constant BITMAPARRAY                    39
+Constant DATA_OBJECT_ARRAY              40
+Constant FACT_PN_CMP1                   50
+Constant FACT_JN_CMP1                   51
+Constant FACT_JN_CMP2                   52
+Constant FACT_SLOT_LENGTH               53
+Constant FACT_PN_VAR1                   54
+Constant FACT_PN_VAR2                   55
+Constant FACT_PN_VAR3                   56
+Constant FACT_JN_VAR1                   57
+Constant FACT_JN_VAR2                   58
+Constant FACT_JN_VAR3                   59
+Constant FACT_PN_CONSTANT1              60
+Constant FACT_PN_CONSTANT2              61
+Constant FACT_STORE_MULTIFIELD          62
+Constant DEFTEMPLATE_PTR                63
+Constant OBJ_GET_SLOT_PNVAR1            70
+Constant OBJ_GET_SLOT_PNVAR2            71
+Constant OBJ_GET_SLOT_JNVAR1            72
+Constant OBJ_GET_SLOT_JNVAR2            73
+Constant OBJ_SLOT_LENGTH                74
+Constant OBJ_PN_CONSTANT                75
+Constant OBJ_PN_CMP1                    76
+Constant OBJ_JN_CMP1                    77
+Constant OBJ_PN_CMP2                    78
+Constant OBJ_JN_CMP2                    79
+Constant OBJ_PN_CMP3                    80
+Constant OBJ_JN_CMP3                    81
+Constant DEFCLASS_PTR                   82
+Constant HANDLER_GET                    83
+Constant HANDLER_PUT                    84
+Constant DEFGLOBAL_PTR                  90
+Constant PROC_PARAM                     95
+Constant PROC_WILD_PARAM                96
+Constant PROC_GET_BIND                  97
+Constant PROC_BIND                      98
+Constant PATTERN_CE                    150
+Constant AND_CE                        151
+Constant OR_CE                         152
+Constant NOT_CE                        153
+Constant TEST_CE                       154
+Constant NAND_CE                       155
+Constant EXISTS_CE                     156
+Constant FORALL_CE                     157
+Constant NOT_CONSTRAINT                160
+Constant AND_CONSTRAINT                161
+Constant OR_CONSTRAINT                 162
+Constant PREDICATE_CONSTRAINT          163
+Constant RETURN_VALUE_CONSTRAINT       164
+Constant LPAREN                        170
+Constant RPAREN                        171
+Constant STOP                          172
+Constant UNKNOWN_VALUE                 173
+Constant RVOID                         175
+Constant INTEGER_OR_FLOAT              180
+Constant SYMBOL_OR_STRING              181
+Constant INSTANCE_OR_INSTANCE_NAME     182
