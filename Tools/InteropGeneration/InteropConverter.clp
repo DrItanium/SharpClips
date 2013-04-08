@@ -44,7 +44,7 @@
          (retract ?f)
          (assert (Constant Header ?name char*)
                  (Constant Implementation ?name char*)
-                 (Constant C# ?name IntPtr)))
+                 (Constant C# ?name string)))
 
 (defrule generate-interop-macro-header
          (declare (salience 2))
@@ -88,14 +88,16 @@
          (retract ?f)
          (format t "[DllImport(\"libclips.so\")]%nprivate static extern int Interop_Get%s();%n" ?name))
 
-(defrule generate-interop-constant-c#-IntPtr
-         ?f <- (Constant C# ?name IntPtr) 
+(defrule generate-interop-constant-c#-string
+         ?f <- (Constant C# ?name string) 
          =>
          (retract ?f)
-         (format t "[DllImport(\"libclips.so\")]%nprivate static extern IntPtr Interop_Get%s();%n" ?name))
+         (format t "[DllImport(\"libclips.so\")]%nprivate static extern string Interop_Get%s();%n" ?name)
+         (format t "private static extern string String_Interop_Get%s()%n{%nIntPtr i = Interop_Get%s();%nstring result = Marshal.PtrToStringAuto(i);%ni = IntPtr.Zero;%nreturn result;%n}%n" ?name ?name))
+          
 
 (defrule generate-interop-constant-c#
-         ?f <- (Constant C# ?name ?retType ) 
+         ?f <- (Constant C# ?name ?retType) 
          =>
          (retract ?f)
          (format t "[DllImport(\"libclips.so\")]%nprivate static extern %s Interop_Get%s();%n" ?retType ?name))
