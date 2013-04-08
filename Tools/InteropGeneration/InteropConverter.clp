@@ -97,7 +97,11 @@
           
 
 (defrule generate-interop-constant-c#
+ (declare (salience -1))
          ?f <- (Constant C# ?name ?retType) 
          =>
          (retract ?f)
          (format t "[DllImport(\"libclips.so\")]%nprivate static extern %s Interop_Get%s();%n" ?retType ?name))
+
+(run)
+(exit)
