@@ -1,0 +1,3 @@
+*.o
+libclips.so
+*.swp
